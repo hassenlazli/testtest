@@ -62,5 +62,4 @@
 /Users/kaos/Desktop/Noroveka/test/bin/Debug/net5.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /Users/kaos/Desktop/Noroveka/test/bin/Debug/net5.0/Newtonsoft.Json.dll
 /Users/kaos/Desktop/Noroveka/test/bin/Debug/net5.0/Newtonsoft.Json.Bson.dll
-/Users/kaos/Desktop/Noroveka/test/bin/Debug/net5.0/Controllers/moddel.json
-/Users/kaos/Desktop/Noroveka/test/bin/Debug/net5.0/Controllers/model_a_suivre.json
+/Users/kaos/Desktop/Noroveka/test/bin/Debug/net5.0/MoreLinq.dll

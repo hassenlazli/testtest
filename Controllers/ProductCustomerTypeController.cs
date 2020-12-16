@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using test.Models;
+using test.Models.subModels;
+using MoreLinq.Extensions;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace exempleApiTenders.Controllers
@@ -12,75 +15,61 @@ namespace exempleApiTenders.Controllers
     [ApiController]
     public class ProductCustomerTypeController : ControllerBase
     {
-        private readonly apiContext _context;
+        private readonly palcdist_2020Context _context;
 
-        public ProductCustomerTypeController(apiContext context)
+        public ProductCustomerTypeController(palcdist_2020Context context)
         {
             _context = context;
         }
         // Get api/ProductCustomerType/GetProductCustomerTypes
         [HttpGet("")]
-        public ActionResult<IList<Object>> GetProductCustomerTypes()
+        [Route("1")]
+        public ActionResult<IEnumerable<Object>> GetProductCustomerTypes()
+
         {
-
             var result = _context.ProductCustomerTypes
-              .Include(x => x.CustomerTypeNavigation)
-              .Include(x => x.ProductNavigation)
-              .Select(row => new
-              {
-                  id = row.ProductNavigation.Id,
-                  barCode = row.ProductNavigation.Ean13code,
-                  name = row.ProductNavigation.Name,
-                  category = row.ProductNavigation.CategoryNavigation.FullName,
-                  price = row.ProductNavigation.SalePriceTaxIncluded,
-                  quantity = row.ProductNavigation.Quantity,
-                  productPrices = new
-                  {
-
-                      typeClient = row.CustomerTypeNavigation.Designation,
-                      price = row.PriceAfterTax
-                  }
-
-                  //  .Select(p => new
-                  //  {
-                  //      typeClient = p.ProductNavigation.CategoryNavigation.FullName,
-                  //      price = row.PriceAfterTax,
-                  //  })
-
-              }).ToList();
-
-
-
-
-            return result.ToList().Cast<Object>().ToList();
+            .Include(x => x.CustomerTypeNavigation)
+            .Include(x => x.ProductNavigation)
+            .Select(e => new SubProductCustomerType
+            {
+                Id = e.ProductNavigation.Id,
+                BarCode = e.ProductNavigation.Ean13code,
+                Name = e.ProductNavigation.Name,
+                Categoriy = e.ProductNavigation.CategoryNavigation.FullName,
+                Price = e.ProductNavigation.SalePriceTaxIncluded,
+                Quantity = e.ProductNavigation.Quantity,
+                ProductPrices = e.ProductNavigation.ProductCustomerTypes
+               .Select(row => new ProductPrice
+               {
+                   Designation = row.CustomerTypeNavigation.Designation,
+                   PriceAfterTax = row.PriceAfterTax
+               }).ToList()
+            }).ToList();
+            return result.DistinctBy(x => x.Id).ToList();
 
         }
-        [HttpGet]
+        [HttpGet("")]
         [Route("2")]
-        public ActionResult<IList<Object>> GetProductCustomerTypes2()
+        public ActionResult<IEnumerable<Object>> GetProductwithouCustomerType()
+
         {
-
-            var result = _context.ProductCustomerTypes
-              .Include(x => x.CustomerTypeNavigation)
-              .Include(x => x.ProductNavigation).Where(x => x.ProductNavigation.Id != null)
-              .Select(row => new
-              {
-                  id = row.ProductNavigation.Id,
-                  barCode = row.ProductNavigation.Ean13code,
-                  name = row.ProductNavigation.Name,
-                  category = row.ProductNavigation.CategoryNavigation.FullName,
-                  price = row.ProductNavigation.SalePriceTaxIncluded,
-                  quantity = row.ProductNavigation.Quantity,
-                  typeClient = row.ProductNavigation.CategoryNavigation.FullName,
-                  prices = row.PriceAfterTax,
-
-
-              }).Take(5);
-
-
-
-
-            return result.ToList().Cast<Object>().ToList();
+            var result = _context.Products
+            .Select(e => new SubProductCustomerType
+            {
+                Id = e.Id,
+                BarCode = e.Ean13code,
+                Name = e.Name,
+                Categoriy = e.CategoryNavigation.FullName,
+                Price = e.SalePriceTaxIncluded,
+                Quantity = e.Quantity,
+                ProductPrices = e.ProductCustomerTypes
+               .Select(row => new ProductPrice
+               {
+                   Designation = row.CustomerTypeNavigation.Designation,
+                   PriceAfterTax = row.PriceAfterTax
+               }).ToList()
+            }).ToList();
+            return result.DistinctBy(x => x.Id).ToList();
 
         }
 

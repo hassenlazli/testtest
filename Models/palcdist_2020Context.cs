@@ -1,36 +1,36 @@
-﻿
+﻿using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
-
-
-
+#nullable disable
 
 namespace test.Models
 {
-    public partial class apiContext : DbContext
+    public partial class palcdist_2020Context : DbContext
     {
-        // public apiContext()
-        // {
-        // }
+        public palcdist_2020Context()
+        {
+        }
 
-        public apiContext(DbContextOptions<apiContext> options)
+        public palcdist_2020Context(DbContextOptions<palcdist_2020Context> options)
             : base(options)
         {
-
         }
 
         public virtual DbSet<CustomerType> CustomerTypes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<ProductCustomerType> ProductCustomerTypes { get; set; }
+        public virtual DbSet<Truck> Trucks { get; set; }
+        public virtual DbSet<Vendor> Vendors { get; set; }
+        public virtual DbSet<Warehouse> Warehouses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-
-                optionsBuilder.UseSqlServer("Server=tcp:2.tcp.ngrok.io,11468;Initial Catalog=palcdist_2020;Persist Security Info=False;User ID=sa;Password=58206670;MultipleActiveResultSets=False;Encrypt=false;TrustServerCertificate=False;");
+                optionsBuilder.UseSqlServer("Server=tcp:0.tcp.ngrok.io,15136;Initial Catalog=palcdist_2020;Persist Security Info=False;User ID=sa;Password=58206670;MultipleActiveResultSets=False;Encrypt=false;TrustServerCertificate=False;");
             }
         }
 
@@ -345,6 +345,11 @@ namespace test.Models
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.Category)
                     .HasConstraintName("FK_Product_category");
+
+                entity.HasOne(d => d.DefaultWarehouseNavigation)
+                    .WithMany(p => p.Products)
+                    .HasForeignKey(d => d.DefaultWarehouse)
+                    .HasConstraintName("FK_Product_defaultWarehouse");
             });
 
             modelBuilder.Entity<ProductCategory>(entity =>
@@ -462,6 +467,128 @@ namespace test.Models
                     .WithMany(p => p.ProductCustomerTypes)
                     .HasForeignKey(d => d.Product)
                     .HasConstraintName("FK_ProductCustomerType_product");
+            });
+
+            modelBuilder.Entity<Truck>(entity =>
+            {
+                entity.HasKey(e => e.Oid);
+
+                entity.ToTable("Truck");
+
+                entity.HasIndex(e => e.Vehicule, "ivehicule_Truck");
+
+                entity.Property(e => e.Oid).ValueGeneratedNever();
+
+                entity.Property(e => e.Matricule)
+                    .HasMaxLength(100)
+                    .HasColumnName("matricule");
+
+                entity.Property(e => e.Vehicule).HasColumnName("vehicule");
+
+                entity.HasOne(d => d.OidNavigation)
+                    .WithOne(p => p.Truck)
+                    .HasForeignKey<Truck>(d => d.Oid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Truck_Oid");
+            });
+
+            modelBuilder.Entity<Vendor>(entity =>
+            {
+                entity.HasKey(e => e.Oid);
+
+                entity.ToTable("Vendor");
+
+                entity.HasIndex(e => e.Gcrecord, "iGCRecord_Vendor");
+
+                entity.HasIndex(e => e.CashRegister, "icashRegister_Vendor");
+
+                entity.HasIndex(e => e.CurrentTruck, "icurrentTruck_Vendor");
+
+                entity.HasIndex(e => e.Employee, "iemployee_Vendor");
+
+                entity.Property(e => e.Oid).ValueGeneratedNever();
+
+                entity.Property(e => e.CashRegister).HasColumnName("cashRegister");
+
+                entity.Property(e => e.CurrentTruck).HasColumnName("currentTruck");
+
+                entity.Property(e => e.Employee).HasColumnName("employee");
+
+                entity.Property(e => e.FirstName)
+                    .HasMaxLength(100)
+                    .HasColumnName("firstName");
+
+                entity.Property(e => e.FullName)
+                    .HasMaxLength(100)
+                    .HasColumnName("fullName");
+
+                entity.Property(e => e.Gcrecord).HasColumnName("GCRecord");
+
+                entity.Property(e => e.LastName)
+                    .HasMaxLength(100)
+                    .HasColumnName("lastName");
+
+                entity.Property(e => e.MatriculeEmployé)
+                    .HasMaxLength(100)
+                    .HasColumnName("matricule_employé");
+
+                entity.Property(e => e.MiddleName)
+                    .HasMaxLength(100)
+                    .HasColumnName("middleName");
+
+                entity.HasOne(d => d.CurrentTruckNavigation)
+                    .WithMany(p => p.Vendors)
+                    .HasForeignKey(d => d.CurrentTruck)
+                    .HasConstraintName("FK_Vendor_currentTruck");
+            });
+
+            modelBuilder.Entity<Warehouse>(entity =>
+            {
+                entity.HasKey(e => e.Oid);
+
+                entity.ToTable("Warehouse");
+
+                entity.HasIndex(e => e.Gcrecord, "iGCRecord_Warehouse");
+
+                entity.HasIndex(e => e.ObjectType, "iObjectType_Warehouse");
+
+                entity.HasIndex(e => e.Manager, "imanager_Warehouse");
+
+                entity.HasIndex(e => e.Parameters, "iparameters_Warehouse");
+
+                entity.Property(e => e.Oid).ValueGeneratedNever();
+
+                entity.Property(e => e.AllowBulkQuantities).HasColumnName("allowBulkQuantities");
+
+                entity.Property(e => e.BarCode)
+                    .HasMaxLength(100)
+                    .HasColumnName("barCode");
+
+                entity.Property(e => e.ExcludedFromPreparation).HasColumnName("excludedFromPreparation");
+
+                entity.Property(e => e.Gcrecord).HasColumnName("GCRecord");
+
+                entity.Property(e => e.Id)
+                    .HasMaxLength(100)
+                    .HasColumnName("id");
+
+                entity.Property(e => e.ImmoManagement).HasColumnName("immoManagement");
+
+                entity.Property(e => e.IsActif).HasColumnName("isActif");
+
+                entity.Property(e => e.IsDefaultWarehouse).HasColumnName("isDefaultWarehouse");
+
+                entity.Property(e => e.Manager).HasColumnName("manager");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(100)
+                    .HasColumnName("name");
+
+                entity.Property(e => e.Parameters).HasColumnName("parameters");
+
+                entity.Property(e => e.Priority).HasColumnName("priority");
+
+                entity.Property(e => e.Type).HasColumnName("type");
             });
 
             OnModelCreatingPartial(modelBuilder);

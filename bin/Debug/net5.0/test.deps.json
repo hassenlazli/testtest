@@ -31,7 +31,9 @@
           "Microsoft.EntityFrameworkCore": "5.0.1",
           "Microsoft.EntityFrameworkCore.Design": "5.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.1",
+          "MoreLinq.Source.MoreEnumerable.DistinctBy": "1.0.2",
           "Swashbuckle.AspNetCore": "5.6.3",
+          "morelinq": "3.3.2",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -718,6 +720,18 @@
           "Microsoft.NETCore.Platforms": "3.1.0"
         }
       },
+      "morelinq/3.3.2": {
+        "runtime": {
+          "lib/netstandard2.0/MoreLinq.dll": {
+            "assemblyVersion": "3.3.2.0",
+            "fileVersion": "3.3.2.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/MoreLinq.dll": {}
+        }
+      },
+      "MoreLinq.Source.MoreEnumerable.DistinctBy/1.0.2": {},
       "Newtonsoft.Json/12.0.2": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -3302,6 +3316,20 @@
       "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+    },
+    "morelinq/3.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MQc8GppZJLmjvcpEdf3EkC6ovsp7gRWt2e5mC7dcIOrgwSc+yjFd3JQ0iRqr3XrUT6rb/phv0IkEmBtbfVA7AQ==",
+      "path": "morelinq/3.3.2",
+      "hashPath": "morelinq.3.3.2.nupkg.sha512"
+    },
+    "MoreLinq.Source.MoreEnumerable.DistinctBy/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5nvK0vyWMmPGsSETofUYox4D+4LMoGvUNY6rzb6EedG6YcJv83/q65cR9qIzC8Z2ZfLCqaCLqX5XyoTMVsB9hw==",
+      "path": "morelinq.source.moreenumerable.distinctby/1.0.2",
+      "hashPath": "morelinq.source.moreenumerable.distinctby.1.0.2.nupkg.sha512"
     },
     "Newtonsoft.Json/12.0.2": {
       "type": "package",

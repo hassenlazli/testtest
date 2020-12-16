@@ -1,8 +1,7 @@
 ﻿using System;
-using test.Models.subModels;
 using System.Collections.Generic;
 
-
+#nullable disable
 
 namespace test.Models
 {
@@ -23,7 +22,6 @@ namespace test.Models
         public Guid? Parameters { get; set; }
         public int? OptimisticLockField { get; set; }
         public int? Gcrecord { get; set; }
-        public virtual IEnumerable<NestedSubProductCustomerType> nestedArray { get; set; }
 
         public virtual CustomerType CustomerTypeNavigation { get; set; }
         public virtual Product ProductNavigation { get; set; }

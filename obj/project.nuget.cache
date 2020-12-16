@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jjs5QfwluPZXSqcc622AJbIQr3i2xk3SpJupYhoo4PllmC0L1BvOrCr0aaInzNFAOVHY2xI/AHhBrVAyxLBPkg==",
+  "dgSpecHash": "L7QmJu5LoMFBfUYJ5D1u+6jikTEUAn6ozHrjsetAe3D/D4d2kGjAXSZ728kSOXZ81xwLDAuuKvT15+aV4OggBw==",
   "success": true,
   "projectFilePath": "/Users/kaos/Desktop/Noroveka/test/test.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,8 @@
     "/Users/kaos/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
     "/Users/kaos/.nuget/packages/microsoft.win32.registry/4.7.0/microsoft.win32.registry.4.7.0.nupkg.sha512",
     "/Users/kaos/.nuget/packages/microsoft.win32.systemevents/4.7.0/microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "/Users/kaos/.nuget/packages/morelinq/3.3.2/morelinq.3.3.2.nupkg.sha512",
+    "/Users/kaos/.nuget/packages/morelinq.source.moreenumerable.distinctby/1.0.2/morelinq.source.moreenumerable.distinctby.1.0.2.nupkg.sha512",
     "/Users/kaos/.nuget/packages/newtonsoft.json/12.0.2/newtonsoft.json.12.0.2.nupkg.sha512",
     "/Users/kaos/.nuget/packages/newtonsoft.json.bson/1.0.2/newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "/Users/kaos/.nuget/packages/runtime.native.system/4.3.0/runtime.native.system.4.3.0.nupkg.sha512",

@@ -7,13 +7,14 @@ namespace test.Models
         public string Id { get; set; }
         public string Name { get; set; }
 
-        public decimal? SalePriceTaxIncluded { get; set; }
+        public decimal? Price { get; set; }
 
         public double? Quantity { get; set; }
 
-        public string Ean13code { get; set; }
-        public string FullName { get; set; }
-        public virtual IEnumerable<NestedSubProductCustomerType> nestedArray { get; set; }
+        public string BarCode { get; set; }
+        public string Categoriy { get; set; }
+        public virtual IList<ProductPrice> ProductPrices { get; set; }
+
 
 
     }

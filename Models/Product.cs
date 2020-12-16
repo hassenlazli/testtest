@@ -1,8 +1,7 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 
-
+#nullable disable
 
 namespace test.Models
 {
@@ -101,6 +100,7 @@ namespace test.Models
         public bool? IsPdr { get; set; }
 
         public virtual ProductCategory CategoryNavigation { get; set; }
+        public virtual Warehouse DefaultWarehouseNavigation { get; set; }
         public virtual ICollection<ProductCustomerType> ProductCustomerTypes { get; set; }
     }
 }
