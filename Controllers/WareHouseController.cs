@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using test.Models;
+using apiProject.Models;
 
-namespace test.Controllers
+namespace apiProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,9 +19,17 @@ namespace test.Controllers
         }
 
         [HttpGet("")]
-        public ActionResult<IEnumerable<Warehouse>> GetWarehouses()
+        public ActionResult<IEnumerable<Object>> GetWarehouses()
         {
-            return NotFound();
+            var result = _Context.Trucks
+             .Where(x => x.OidNavigation.Oid == x.Oid)
+             .Select(x => new
+             {
+                 code = x.OidNavigation.Id,
+                 name = x.OidNavigation.Name
+             }).ToList();
+
+            return result.ToList().Cast<Object>().ToList();
         }
 
         [HttpGet("{id}")]

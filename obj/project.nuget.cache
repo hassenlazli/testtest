@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L7QmJu5LoMFBfUYJ5D1u+6jikTEUAn6ozHrjsetAe3D/D4d2kGjAXSZ728kSOXZ81xwLDAuuKvT15+aV4OggBw==",
+  "dgSpecHash": "TWQHgYiTYRymbulPwmPq7zSzsXX/iTQVp1uwg4YQ8NRrC7JEZhQ+c4ndYWy1KJdtJituu00fZdJf4IU1uGhxZA==",
   "success": true,
-  "projectFilePath": "/Users/kaos/Desktop/Noroveka/test/test.csproj",
+  "projectFilePath": "/Users/kaos/Desktop/Noroveka/test2/copy2/apiProject/test.csproj",
   "expectedPackageFiles": [
     "/Users/kaos/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/kaos/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/5.0.0/microsoft.aspnetcore.authentication.jwtbearer.5.0.0.nupkg.sha512",

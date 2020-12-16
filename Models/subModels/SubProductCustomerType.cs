@@ -1,6 +1,6 @@
-using test.Models.subModels;
+using apiProject.Models.subModels;
 using System.Collections.Generic;
-namespace test.Models
+namespace apiProject.Models
 {
     public class SubProductCustomerType
     {

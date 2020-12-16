@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using test.Models;
+using apiProject.Models;
 
-namespace test.Controllers
+namespace apiProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -5735,11 +5735,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/kaos/Desktop/Noroveka/test/test.csproj",
+      "projectUniqueName": "/Users/kaos/Desktop/Noroveka/test2/copy2/apiProject/test.csproj",
       "projectName": "test",
-      "projectPath": "/Users/kaos/Desktop/Noroveka/test/test.csproj",
+      "projectPath": "/Users/kaos/Desktop/Noroveka/test2/copy2/apiProject/test.csproj",
       "packagesPath": "/Users/kaos/.nuget/packages/",
-      "outputPath": "/Users/kaos/Desktop/Noroveka/test/obj/",
+      "outputPath": "/Users/kaos/Desktop/Noroveka/test2/copy2/apiProject/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/kaos/.nuget/NuGet/NuGet.Config"

@@ -1,7 +1,7 @@
-using test.Models.subModels;
+using apiProject.Models.subModels;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-namespace test.Models.subModels
+namespace apiProject.Models.subModels
 {
 
     public class ProductPrice

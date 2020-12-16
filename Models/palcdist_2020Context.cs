@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace test.Models
+namespace apiProject.Models
 {
     public partial class palcdist_2020Context : DbContext
     {
@@ -27,11 +27,6 @@ namespace test.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=tcp:0.tcp.ngrok.io,15136;Initial Catalog=palcdist_2020;Persist Security Info=False;User ID=sa;Password=58206670;MultipleActiveResultSets=False;Encrypt=false;TrustServerCertificate=False;");
-            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

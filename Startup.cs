@@ -9,13 +9,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
-using test.Models;
+using apiProject.Models;
 using Newtonsoft.Json;
 
-namespace test
+
+namespace apiProject
 {
     public class Startup
     {
@@ -29,7 +31,7 @@ namespace test
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<palcdist_2020Context>();
+            services.AddDbContext<palcdist_2020Context>(option => option.UseSqlServer(Configuration["Data:apiProject:ConnectionString"]));
             services.AddControllers().AddNewtonsoftJson(o =>
                 o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore); ;
             services.AddSwaggerGen(c =>

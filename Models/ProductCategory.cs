@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace test.Models
+namespace apiProject.Models
 {
     public partial class ProductCategory
     {
